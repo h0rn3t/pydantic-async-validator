@@ -2,7 +2,6 @@ from typing import Any, Dict, List
 
 import pydantic
 import pytest
-from pydantic.error_wrappers import ErrorWrapper
 
 from pydantic_async_validation import AsyncValidationModelMixin, async_field_validator
 from pydantic_async_validation.errors import PydanticUserError
