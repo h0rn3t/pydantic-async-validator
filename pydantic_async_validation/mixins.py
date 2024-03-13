@@ -1,6 +1,7 @@
 from typing import ClassVar, List, Tuple, Union
 
 import pydantic
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
 
 from pydantic_async_validation.constants import (
     ASYNC_FIELD_VALIDATOR_CONFIG_KEY,
@@ -8,11 +9,9 @@ from pydantic_async_validation.constants import (
     ASYNC_MODEL_VALIDATOR_CONFIG_KEY,
     ASYNC_MODEL_VALIDATORS_KEY,
 )
-from pydantic_async_validation.errors import PydanticCustomError
 from pydantic_async_validation.metaclasses import AsyncValidationModelMetaclass
 from pydantic_async_validation.utils import prefix_errors
 from pydantic_async_validation.validators import ValidationInfo
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
 
 
 class AsyncValidationModelMixin(

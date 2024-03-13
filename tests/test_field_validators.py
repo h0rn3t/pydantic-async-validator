@@ -76,13 +76,12 @@ async def test_all_field_validator_combinations_are_valid():
         async def validate_name_8(self, value: str, field: str, config: ValidationInfo) -> None: pass
 
         @async_field_validator('name')
-        async def validate_name_9(self, **kwargs) -> None:
+        async def validate_name_9(self, **_) -> None:
             self.name = "validate_name_9"
 
     instance = OtherModel(name="valid")
     await instance.model_async_validate()
     assert instance.name == "validate_name_9"
-    print(instance.name)
 
 
 @pytest.mark.asyncio()

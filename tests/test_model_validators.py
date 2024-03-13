@@ -5,6 +5,7 @@ import pytest
 from pydantic.error_wrappers import ErrorWrapper
 
 from pydantic_async_validation import AsyncValidationModelMixin, async_model_validator
+from pydantic_async_validation.errors import PydanticCustomError, PydanticUserError
 from pydantic_async_validation.validators import ValidationInfo
 
 
@@ -62,14 +63,14 @@ async def test_all_field_validator_combinations_are_valid():
 
 @pytest.mark.asyncio()
 async def test_invalid_validators_are_prohibited():
-    with pytest.raises(BaseException):
+    with pytest.raises(PydanticUserError):
         class OtherModel1(AsyncValidationModelMixin, pydantic.BaseModel):
             name: str
 
             @async_model_validator()
             async def validate_name(self, uses_value_or_anything: Any) -> None: pass
 
-    with pytest.raises(BaseException):
+    with pytest.raises(PydanticCustomError):
         class OtherModel2(AsyncValidationModelMixin, pydantic.BaseModel):
             name: str
 

@@ -1,6 +1,6 @@
 from functools import wraps
 from inspect import Signature, signature
-from typing import Callable, List, Tuple, Union, cast
+from typing import Callable, List, Tuple, Union
 
 from pydantic.error_wrappers import ErrorWrapper
 
